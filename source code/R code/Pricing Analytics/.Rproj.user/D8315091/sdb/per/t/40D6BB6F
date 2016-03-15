@@ -1,0 +1,17 @@
+{
+    "contents" : "\n#rm(list=ls())\n# Load the dplyr package\nlibrary(dplyr)\n\n##data are stored in <root>/GIT-REPOS/DataScienceIntensive/data\ndataDir <- \"../../../data\"\ndatFl<-file.path(dataDir,\"WA_Retail-SalesMarketing_-ProfitCost.zip\")\n\nsalesData<-read.csv(unz(datFl, \"WA_Retail-SalesMarketing_-ProfitCost.csv\"))\ndim(salesData)\ncolnames(salesData)\n\nsalesData<-tbl_df(salesData)\nsalesData\nglimpse(salesData)\nattach(salesData)\n\ndfHier<-salesData %>% filter(Retailer.country=='United States')\ndfHier<-dfHier %>% group_by(Year,\n                            Product.line,\n                            Product.type,\n                            Product)\n##### select the product here....\ndf1<- dfHier %>% filter(Product.type=='Watches')\ndf1<-arrange(df1,df1[,'Unit.sale.price'])\ndim(df1)\n\nd<-df1$Gross.profit\ni<-df1$Unit.sale.price\ni<-sort(i)\npar(mfrow=c(1,1))\nplot(x=i,y=d,type='l')\nmodel<-lm(d~i+I(i^2)-1)\nsummary(model)\n\npar(mfrow=c(2,2))\n#2004\ntemp<-filter(df1, Year=='2004')\nplot(x=temp$Unit.sale.price, y=temp$Quantity, type='h', col='blue',\n     main=\"2004\")\n#2005\ntemp<-filter(df1, Year=='2005')\nplot(x=temp$Unit.sale.price, y=temp$Quantity, type='h', col='blue',\n     main=\"2005\")\n#2006\ntemp<-filter(df1, Year=='2006')\nplot(x=temp$Unit.sale.price, y=temp$Quantity, type='h', col='blue',\n     main=\"2006\")\n#2007\ntemp<-filter(df1, Year=='2007')\nplot(x=temp$Unit.sale.price, y=temp$Quantity, type='h', col='blue',\n     main=\"2007\")\n\npar(mfrow=c(2,2))\n#2004\ntemp<-filter(df1, Year=='2004')\nplot(x=temp$Unit.sale.price, y=temp$Gross.profit, type='h', col='blue',\n     main=\"2004\")\n\n#2005\ntemp<-filter(df1, Year=='2005')\nplot(x=temp$Unit.sale.price, y=temp$Gross.profit, type='h', col='blue',\n     main=\"2005\")\n\n#2006\ntemp<-filter(df1, Year=='2006')\nplot(x=temp$Unit.sale.price, y=temp$Gross.profit, type='h', col='blue',\n     main=\"2006\")\n\n#2007\ntemp<-filter(df1, Year=='2007')\nplot(x=temp$Unit.sale.price, y=temp$Gross.profit, type='h', col='blue',\n     main=\"2007\")\n\n\n#unit sale price & bins\ninc<-0.5\nfl<-floor(min(df1$Unit.sale.price))\ncl<-ceiling(max(df1$Unit.sale.price))\nbreaks=seq(fl,cl, inc)\ncuts<-cut(df1$Unit.sale.price, \n          breaks=breaks,\n          include.lowest = TRUE)\n\npar(mfrow=c(1,1))\nplot(cuts)\ntcuts<-table(cuts)\nfcuts_sale_price<-as.data.frame(tcuts)\narrange(df1, df1$Unit.sale.price)\n\n#unit price & discount\ndisc<-df1$Unit.price-df1$Unit.sale.price\nmean(disc)\nsd(disc) \nplot(x=disc, y=df1$Quantity, type='h', col='blue')\nplot(x=disc, y=(df1$Unit.sale.price-df1$Unit.cost), type='h', col='green')\n\n",
+    "created" : 1457437064619.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2677354563",
+    "id" : "40D6BB6F",
+    "lastKnownWriteTime" : 1457696992,
+    "path" : "D:/GIT_REPOS/DataScienceIntensive/source code/R code/Pricing Analytics/PricingAnalytics 1.2.R",
+    "project_path" : "PricingAnalytics 1.2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
