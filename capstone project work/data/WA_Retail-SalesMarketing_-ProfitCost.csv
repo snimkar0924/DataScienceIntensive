@@ -1,4 +1,4 @@
-Year,Product line,Product type,Product,Order method type,Retailer country,Revenue,Planned revenue,Product cost,Quantity,Unit cost,Unit price,Gross profit,Unit sale price
+Year,Product_line,Product_type,Product,Order_method_type,Retailer_country,Revenue,Planned_revenue,Product_cost,Quantity,Unit_cost,Unit_price,Gross_profit,Unit_sale_price
 2004,Camping Equipment,Cooking Gear,TrailChef Water Bag,Telephone,United States,437477.15,344917.4931,169471.4212,66385,2.55285714,6.59,268005.7288,5.19571429
 2004,Camping Equipment,Cooking Gear,TrailChef Water Bag,Telephone,Canada,14313.48,13444.68,6298.8,2172,2.9,6.59,8014.68,6.19
 2004,Camping Equipment,Cooking Gear,TrailChef Water Bag,Telephone,Japan,235236.64,195899.648,94844.272,35696,2.657,6.59,140392.368,5.488
