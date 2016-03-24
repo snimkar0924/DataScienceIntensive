@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n\n##rm(list=ls())\n\nlibrary(dplyr)\n\n##read the sales data\nsalesData<-tbl_df(read.csv(\"../data/sales_data.csv\"))\n\nproducts<-unique(salesData$Product)\n\nprd1<-salesData %>% filter(Retailer_country=='United States' &\n                           Product_line=='Personal Accessories' & \n                           Product_type=='Watches' &\n                           Product=='Mountain Man Analog')\n\n## http://www.r-bloggers.com/r-tutorial-series-centering-variables-and-generating-z-scores-with-the-scale-function/\nscRevenue<-scale(prd1$Revenue, center=T, scale=T)\nscQuantity<-scale(prd1$Quantity, center=T, scale=T)\n# mean(prd1$Quantity)\n# sd(prd1$Quantity)\n\n\nprd1<-cbind.data.frame(prd1,scRevenue)\n\n\n",
+    "created" : 1458704981180.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2804014698",
+    "id" : "6E10A3AE",
+    "lastKnownWriteTime" : 1458732368,
+    "last_content_update" : 1458732368592,
+    "path" : "D:/GIT_REPOS/DataScienceIntensive/source code/R code/Data Normalization/DataNormalization.R",
+    "project_path" : "DataNormalization.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
